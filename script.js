@@ -409,7 +409,7 @@ function openProjectModal(title, category, description) {
 
 /* CV Download Trigger */
 function downloadCVFile() {
-    window.open('assets/Karthick_Raja_Resume.pdf', '_blank');
+    window.open('./assets/Karthick_Raja_Resume.pdf', '_blank');
     closeAllModals();
 }
 

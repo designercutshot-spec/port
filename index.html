@@ -35,7 +35,7 @@
         <div class="container nav-container">
             <!-- Brand Logo -->
             <a href="#home" class="brand-logo">
-                <img src="assets/logo.png" alt="Karthick Raja Logo" class="brand-logo-img">
+                <img src="./assets/logo.png" alt="Karthick Raja Logo" class="brand-logo-img">
             </a>
 
             <!-- Navigation Links -->
@@ -45,12 +45,10 @@
                 <a href="#services" class="nav-link">SERVICE</a>
                 <a href="#portfolio" class="nav-link">PORTFOLIO</a>
                 <a href="#contact" class="nav-link">CONTACT</a>
-                <a href="admin.html" class="nav-link text-gold"><i class="fa-solid fa-sliders"></i> ADMIN</a>
             </nav>
 
             <!-- Nav Action CTA -->
             <div class="nav-cta">
-                <a href="assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gold btn-header"><i class="fa-solid fa-download"></i> CV</a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -85,7 +83,7 @@
 
                 <!-- Hero Action Buttons -->
                 <div class="hero-actions">
-                    <a href="assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gold">
+                    <a href="./assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gold">
                         <i class="fa-solid fa-download"></i> DOWNLOAD CV
                     </a>
                     <button class="btn btn-outline" onclick="openModal('hireModal')">
@@ -121,11 +119,10 @@
                 </div>
             </div>
 
-            <!-- Hero Right Image -->
+            <!-- Hero Right Image Card -->
             <div class="hero-image-wrapper">
                 <div class="hero-portrait-card">
-                    <div class="portrait-halo"></div>
-                    <img src="assets/portrait.png" alt="Karthick Raja - UI/UX Designer" class="hero-portrait-img" id="hero-portrait">
+                    <img src="./assets/portrait.png" alt="Karthick Raja Portrait" class="hero-portrait-img" onerror="this.onerror=null; this.src='./assets/portrait.jpg';">
                 </div>
             </div>
         </div>
@@ -556,9 +553,14 @@
     <footer class="footer">
         <div class="container footer-container">
             <a href="#home" class="brand-logo">
-                <img src="assets/logo.png" alt="Karthick Raja Logo" class="footer-logo-img">
+                <img src="./assets/logo.png" alt="Karthick Raja Logo" class="footer-logo-img">
             </a>
-            <p class="footer-copy">© 2026 Karthick Raja. All Rights Reserved. Crafted with passion & pixel perfection.</p>
+            <p class="footer-copy">
+                © 2026 Karthick Raja. All Rights Reserved. Crafted with passion & pixel perfection.
+                <a href="admin.html" style="color: var(--text-muted); margin-left: 16px; text-decoration: none; font-size: 0.82rem; transition: var(--smooth-transition);" onmouseover="this.style.color='#F71735'" onmouseout="this.style.color='var(--text-muted)'">
+                    <i class="fa-solid fa-sliders"></i> Admin Control Panel
+                </a>
+            </p>
             <div class="footer-socials">
                 <a href="https://www.instagram.com/karthickartsplus?igsh=MXV0NG04NGJhenF2cg%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-ig"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-li"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -697,7 +699,7 @@
             </div>
 
             <div class="cv-actions" style="display:flex; gap:12px; margin-top:20px;">
-                <a href="assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gold btn-full"><i class="fa-solid fa-file-pdf"></i> Download Official Resume PDF</a>
+                <a href="./assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" target="_blank" rel="noopener" class="btn btn-gold btn-full"><i class="fa-solid fa-file-pdf"></i> Download Official Resume PDF</a>
             </div>
         </div>
 
