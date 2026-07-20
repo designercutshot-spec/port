@@ -112,6 +112,37 @@ body {
     transition: var(--spring-transition);
 }
 
+.logo-fallback {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-badge {
+    background: #F71735;
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(247, 23, 53, 0.4);
+    letter-spacing: 1px;
+}
+
+.logo-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+.logo-name strong {
+    color: #F71735;
+}
+
 .brand-logo:hover .brand-logo-img {
     transform: scale(1.03);
 }
