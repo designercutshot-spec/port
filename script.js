@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KARTHICK RAJA PORTFOLIO - INTERACTIVE & ADMIN DATA MANAGEMENT LOGIC
+   KARTHICK RAJA PORTFOLIO - FULL DYNAMIC DATA BINDING & LIVE ADMIN SYNC
    ========================================================================== */
 
 const defaultPortfolioData = {
@@ -15,7 +15,6 @@ const defaultPortfolioData = {
     contact: {
         phone: "+91 9994667382",
         email: "karthick.designer8@gmail.com",
-        address: "6/22 Sindhu Nagar, Kuniyamuthur, Coimbatore",
         behance: "https://www.behance.net/skarthickr672d",
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com",
@@ -60,14 +59,18 @@ function savePortfolioData(data) {
 function applyPortfolioDataToDOM() {
     const data = getPortfolioData();
 
-    // Hero Section
+    // 1. Hero Section Binding
+    const heroGreeting = document.querySelector('.hero-greeting');
+    if (heroGreeting && data.hero.greeting) heroGreeting.textContent = data.hero.greeting;
+
     const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) heroTitle.textContent = data.hero.name;
+    if (heroTitle && data.hero.name) heroTitle.textContent = data.hero.name;
+
     const heroRole = document.querySelector('.hero-subtitle');
-    if (heroRole) heroRole.textContent = data.hero.role;
+    if (heroRole && data.hero.role) heroRole.textContent = data.hero.role;
 
     const stats = document.querySelectorAll('.stat-number');
-    if (stats.length >= 3) {
+    if (stats.length >= 3 && data.hero) {
         stats[0].setAttribute('data-target', data.hero.exp);
         stats[0].textContent = data.hero.exp;
         stats[1].setAttribute('data-target', data.hero.projectsCount);
@@ -76,19 +79,44 @@ function applyPortfolioDataToDOM() {
         stats[2].textContent = data.hero.clientsCount;
     }
 
-    // Contact Cards
-    const emailLink = document.querySelector('a[href^="mailto:"]');
-    if (emailLink) {
-        emailLink.href = `mailto:${data.contact.email}`;
-        emailLink.textContent = data.contact.email;
-    }
-    const phoneLink = document.querySelector('a[href^="tel:"]');
-    if (phoneLink) {
-        phoneLink.href = `tel:${data.contact.phone}`;
-        phoneLink.textContent = data.contact.phone;
+    // 2. About Bio Paragraph Binding
+    const aboutFirstPara = document.querySelector('.about-card p');
+    if (aboutFirstPara && data.hero.bio) {
+        aboutFirstPara.textContent = data.hero.bio;
     }
 
-    // Skills Matrix
+    // 3. Contact Details & Social Links Binding
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.href = `mailto:${data.contact.email}`;
+        link.textContent = data.contact.email;
+    });
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.href = `tel:${data.contact.phone}`;
+        link.textContent = data.contact.phone;
+    });
+
+    const behanceLinks = document.querySelectorAll('a[href*="behance"]');
+    behanceLinks.forEach(link => {
+        if (data.contact.behance) link.href = data.contact.behance;
+    });
+
+    const linkedinLinks = document.querySelectorAll('a[href*="linkedin"]');
+    linkedinLinks.forEach(link => {
+        if (data.contact.linkedin) link.href = data.contact.linkedin;
+    });
+
+    const instagramLinks = document.querySelectorAll('a[href*="instagram"]');
+    instagramLinks.forEach(link => {
+        if (data.contact.instagram) link.href = data.contact.instagram;
+    });
+
+    const dribbbleLinks = document.querySelectorAll('a[href*="dribbble"]');
+    dribbbleLinks.forEach(link => {
+        if (data.contact.dribbble) link.href = data.contact.dribbble;
+    });
+
+    // 4. Skills Matrix Rendering
     const skillsGrid = document.querySelector('.skills-grid');
     if (skillsGrid && data.skills) {
         skillsGrid.innerHTML = '';
@@ -105,6 +133,54 @@ function applyPortfolioDataToDOM() {
             skillsGrid.appendChild(item);
         });
     }
+
+    // 5. Portfolio Projects Rendering
+    const portfolioGrid = document.querySelector('.portfolio-grid');
+    if (portfolioGrid && data.projects) {
+        portfolioGrid.innerHTML = '';
+        data.projects.forEach((proj, idx) => {
+            const card = document.createElement('div');
+            card.className = 'portfolio-card glass-card';
+            card.setAttribute('data-category', proj.category || 'all');
+            card.innerHTML = `
+                <div class="project-img-wrapper">
+                    <div class="project-dummy-img img-fintech">
+                        <i class="fa-solid fa-folder-open project-icon"></i>
+                        <span class="project-tag">PROJECT ${idx + 1}</span>
+                    </div>
+                    <div class="project-overlay">
+                        <button class="project-btn" onclick="openProjectModal('${proj.title.replace(/'/g, "\\'")}', 'Case Study', '${proj.description.replace(/'/g, "\\'")}')">
+                            View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="project-category">${proj.category ? proj.category.toUpperCase() : 'UI/UX'}</span>
+                    <h3 class="project-title">${proj.title}</h3>
+                </div>
+            `;
+            portfolioGrid.appendChild(card);
+        });
+    }
+
+    // 6. Services Grid Rendering
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid && data.services) {
+        servicesGrid.innerHTML = '';
+        data.services.forEach(srv => {
+            const card = document.createElement('div');
+            card.className = 'service-card glass-card';
+            card.innerHTML = `
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                </div>
+                <h3 class="service-card-title">${srv.title}</h3>
+                <p class="service-card-desc">${srv.description}</p>
+                <button class="service-link" onclick="openServiceModal('${srv.title.replace(/'/g, "\\'")}')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+            `;
+            servicesGrid.appendChild(card);
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,41 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavHighlight();
     initStatsCounter();
     initPortfolioFilter();
-    initCursorSpotlight();
-    initGlassTilt();
 });
 
-/* Fluid Cursor Spotlight Tracker */
-function initCursorSpotlight() {
-    const cursorGlow = document.getElementById('cursorGlow');
-    if (cursorGlow) {
-        window.addEventListener('mousemove', (e) => {
-            cursorGlow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        });
+/* Listen for cross-tab storage changes (Admin updates sync live!) */
+window.addEventListener('storage', (e) => {
+    if (e.key === 'karthick_portfolio_data') {
+        applyPortfolioDataToDOM();
     }
-}
-
-/* 3D Glass Tilt Micro-Interactions */
-function initGlassTilt() {
-    const glassCards = document.querySelectorAll('.glass-card, .hero-portrait-card, .stats-box');
-    glassCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((centerY - y) / 18).toFixed(2);
-            const rotateY = ((x - centerX) / 18).toFixed(2);
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`;
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
-        });
-    });
-}
+});
 
 /* Mobile Menu Toggle */
 function initMobileMenu() {
@@ -166,7 +215,6 @@ function initMobileMenu() {
             }
         });
 
-        // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -181,10 +229,8 @@ function initScrollNavbar() {
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.padding = '12px 0';
-            navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+            navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.6)';
         } else {
-            navbar.style.padding = '18px 0';
             navbar.style.boxShadow = 'none';
         }
     });
@@ -214,7 +260,7 @@ function initActiveNavHighlight() {
     });
 }
 
-/* Animated Number Counter for Stats Box (5+, 20+, 30+) */
+/* Animated Number Counter */
 function initStatsCounter() {
     const statNumbers = document.querySelectorAll('.stat-number');
     let animated = false;
@@ -224,10 +270,10 @@ function initStatsCounter() {
             if (entry.isIntersecting && !animated) {
                 animated = true;
                 statNumbers.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'), 10);
+                    const target = parseInt(stat.getAttribute('data-target'), 10) || 0;
                     let count = 0;
-                    const duration = 1500; // ms
-                    const stepTime = Math.max(Math.floor(duration / target), 30);
+                    const duration = 1200;
+                    const stepTime = Math.max(Math.floor(duration / Math.max(target, 1)), 30);
 
                     const timer = setInterval(() => {
                         count += 1;
@@ -251,17 +297,17 @@ function initStatsCounter() {
 /* Portfolio Filter Tabs */
 function initPortfolioFilter() {
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const portfolioCards = document.querySelectorAll('.portfolio-card');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('filter-btn')) {
             filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            e.target.classList.add('active');
 
-            const filterValue = btn.getAttribute('data-filter');
+            const filterValue = e.target.getAttribute('data-filter');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
 
             portfolioCards.forEach(card => {
-                const category = card.getAttribute('data-category');
+                const category = card.getAttribute('data-category') || '';
                 if (filterValue === 'all' || category.includes(filterValue)) {
                     card.style.display = 'flex';
                     setTimeout(() => {
@@ -276,17 +322,16 @@ function initPortfolioFilter() {
                     }, 300);
                 }
             });
-        });
+        }
     });
 }
 
-/* Modal Open & Close Functions */
+/* Modal Functions */
 function openModal(modalId) {
     const overlay = document.getElementById('modalOverlay');
     const targetModal = document.getElementById(modalId);
 
     if (overlay && targetModal) {
-        // Hide all cards first
         document.querySelectorAll('.modal-card').forEach(card => {
             card.style.display = 'none';
         });
@@ -305,7 +350,6 @@ function closeAllModals() {
     }
 }
 
-/* Service Details Popup Modal */
 function openServiceModal(serviceTitle) {
     const infoContent = document.getElementById('infoModalContent');
     if (infoContent) {
@@ -316,7 +360,7 @@ function openServiceModal(serviceTitle) {
             </div>
             <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; display: flex; flex-direction: column; gap: 14px;">
                 <p>Karthick Raja provides end-to-end expert execution for <strong>${serviceTitle}</strong>, tailored to startup founders, scaleups, and digital product teams.</p>
-                <div style="background: rgba(229, 184, 36, 0.05); padding: 18px; border-left: 3px solid var(--gold-primary); border-radius: 4px;">
+                <div style="background: rgba(247, 23, 53, 0.08); padding: 18px; border-left: 3px solid #F71735; border-radius: 4px;">
                     <strong style="color: #fff; display: block; margin-bottom: 6px;">Key Deliverables:</strong>
                     <ul style="margin-left: 20px;">
                         <li>User Journey Maps & Empathy Personas</li>
@@ -332,7 +376,6 @@ function openServiceModal(serviceTitle) {
     }
 }
 
-/* Case Study Project Popup Modal */
 function openProjectModal(title, category, description) {
     const infoContent = document.getElementById('infoModalContent');
     if (infoContent) {
@@ -342,18 +385,18 @@ function openProjectModal(title, category, description) {
                 <h3>${title}</h3>
             </div>
             <div style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; display: flex; flex-direction: column; gap: 16px;">
-                <div style="background: #111017; height: 180px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-gold);">
-                    <i class="fa-solid fa-layer-group" style="font-size: 3.5rem; color: var(--gold-primary);"></i>
+                <div style="background: #011627; height: 180px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border-gold);">
+                    <i class="fa-solid fa-layer-group" style="font-size: 3.5rem; color: #F71735;"></i>
                 </div>
                 <p><strong>Case Study Summary:</strong> ${description}</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                     <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-                        <span style="font-size: 0.8rem; color: var(--gold-primary); font-weight:700;">ROLE</span>
+                        <span style="font-size: 0.8rem; color: #F71735; font-weight:700;">ROLE</span>
                         <p style="color:#fff; font-size:0.9rem; margin:0;">Lead UI/UX Designer</p>
                     </div>
                     <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px;">
-                        <span style="font-size: 0.8rem; color: var(--gold-primary); font-weight:700;">TIMELINE</span>
-                        <p style="color:#fff; font-size:0.9rem; margin:0;">6 Weeks</p>
+                        <span style="font-size: 0.8rem; color: #F71735; font-weight:700;">TIMELINE</span>
+                        <p style="color:#fff; font-size:0.9rem; margin:0;">4 - 6 Weeks</p>
                     </div>
                 </div>
             </div>
@@ -374,27 +417,52 @@ function downloadCVFile() {
     closeAllModals();
 }
 
-/* Contact Form Submission */
+/* Contact Form WhatsApp Redirection */
 function handleContactSubmit(event) {
     event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    const data = getPortfolioData();
+    let phoneNum = (data.contact && data.contact.phone) ? data.contact.phone.replace(/[^0-9]/g, '') : '919994667382';
+    if (!phoneNum.startsWith('91') && phoneNum.length === 10) {
+        phoneNum = '91' + phoneNum;
+    }
+
+    const waText = `Hi Karthick! I am reaching out from your portfolio website.\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📌 *Project Type:* ${subject}\n\n💬 *Message:* ${message}`;
+    const waUrl = `https://wa.me/${phoneNum}?text=${encodeURIComponent(waText)}`;
+
     const alertBox = document.getElementById('formAlert');
-    alertBox.textContent = 'Thank you, your message has been sent to Karthick Raja! We will respond within 24 hours.';
-    alertBox.className = 'form-alert success';
-    event.target.reset();
+    if (alertBox) {
+        alertBox.textContent = 'Opening WhatsApp chat with Karthick Raja...';
+        alertBox.className = 'form-alert success';
+    }
+
+    setTimeout(() => {
+        window.open(waUrl, '_blank');
+        event.target.reset();
+    }, 500);
 }
 
-/* Hire Form Submission */
+/* Hire Form WhatsApp Redirection */
 function handleHireSubmit(event) {
     event.preventDefault();
-    alert('Thank you for your hiring interest! Karthick Raja will contact you shortly.');
+    const name = event.target.querySelector('input[type="text"]').value;
+    const email = event.target.querySelector('input[type="email"]').value;
+    const budget = event.target.querySelector('select').value;
+
+    const data = getPortfolioData();
+    let phoneNum = (data.contact && data.contact.phone) ? data.contact.phone.replace(/[^0-9]/g, '') : '919994667382';
+    if (!phoneNum.startsWith('91') && phoneNum.length === 10) {
+        phoneNum = '91' + phoneNum;
+    }
+
+    const waText = `Hi Karthick! I would like to hire you for a project.\n\n👤 *Name:* ${name}\n📧 *Work Email:* ${email}\n💰 *Estimated Budget:* ${budget}`;
+    const waUrl = `https://wa.me/${phoneNum}?text=${encodeURIComponent(waText)}`;
+
+    window.open(waUrl, '_blank');
     closeAllModals();
     event.target.reset();
-}
-
-/* Optional Helper function to swap portrait image dynamically */
-function updatePortraitImage(imageSrc) {
-    const imgElement = document.getElementById('hero-portrait');
-    if (imgElement) {
-        imgElement.src = imageSrc;
-    }
 }
