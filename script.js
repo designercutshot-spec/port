@@ -17,7 +17,7 @@ const defaultPortfolioData = {
         email: "karthick.designer8@gmail.com",
         behance: "https://www.behance.net/skarthickr672d",
         linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
+        instagram: "https://www.instagram.com/karthickartsplus?igsh=MXV0NG04NGJhenF2cg%3D%3D&utm_source=qr",
         dribbble: "https://dribbble.com"
     },
     skills: [
@@ -96,24 +96,21 @@ function applyPortfolioDataToDOM() {
         link.textContent = data.contact.phone;
     });
 
-    const behanceLinks = document.querySelectorAll('a[href*="behance"]');
-    behanceLinks.forEach(link => {
-        if (data.contact.behance) link.href = data.contact.behance;
+    // Social Links Binding By Class
+    document.querySelectorAll('.social-ig').forEach(link => {
+        if (data.contact && data.contact.instagram) link.href = data.contact.instagram;
     });
 
-    const linkedinLinks = document.querySelectorAll('a[href*="linkedin"]');
-    linkedinLinks.forEach(link => {
-        if (data.contact.linkedin) link.href = data.contact.linkedin;
+    document.querySelectorAll('.social-li').forEach(link => {
+        if (data.contact && data.contact.linkedin) link.href = data.contact.linkedin;
     });
 
-    const instagramLinks = document.querySelectorAll('a[href*="instagram"]');
-    instagramLinks.forEach(link => {
-        if (data.contact.instagram) link.href = data.contact.instagram;
+    document.querySelectorAll('.social-be').forEach(link => {
+        if (data.contact && data.contact.behance) link.href = data.contact.behance;
     });
 
-    const dribbbleLinks = document.querySelectorAll('a[href*="dribbble"]');
-    dribbbleLinks.forEach(link => {
-        if (data.contact.dribbble) link.href = data.contact.dribbble;
+    document.querySelectorAll('.social-db').forEach(link => {
+        if (data.contact && data.contact.dribbble) link.href = data.contact.dribbble;
     });
 
     // 4. Skills Matrix Rendering
@@ -192,11 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolioFilter();
 });
 
-/* Listen for cross-tab storage changes (Admin updates sync live!) */
+/* Listen for cross-tab storage changes & window focus (Admin updates sync live!) */
 window.addEventListener('storage', (e) => {
     if (e.key === 'karthick_portfolio_data') {
         applyPortfolioDataToDOM();
     }
+});
+
+window.addEventListener('focus', () => {
+    applyPortfolioDataToDOM();
 });
 
 /* Mobile Menu Toggle */
