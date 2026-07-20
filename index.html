@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthick Raja | UI/UX Designer & Product Creator</title>
+    <meta name="description" content="Portfolio of Karthick Raja, a professional UI/UX Designer specializing in intuitive web apps, mobile applications, and design systems.">
+    <meta name="keywords" content="Karthick Raja, UI/UX Designer, Product Designer, Portfolio, Mobile Apps, Web Design, Figma, User Research">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Interactive Fluid Cursor Spotlight Glow -->
+    <div class="liquid-cursor-glow" id="cursorGlow"></div>
+
+    <!-- iOS Ultra-Fluid Background Liquid Mesh -->
+    <div class="liquid-bg">
+        <div class="liquid-blob blob-1"></div>
+        <div class="liquid-blob blob-2"></div>
+        <div class="liquid-blob blob-3"></div>
+        <div class="liquid-blob blob-4"></div>
+        <div class="liquid-blob blob-gold"></div>
+        <div class="liquid-blob blob-gold-2"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <!-- Brand Logo -->
+            <a href="#home" class="brand-logo">
+                <img src="assets/logo.png" alt="KR Karthick Raja Logo" class="brand-logo-img">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">HOME</a>
+                <a href="#about" class="nav-link">ABOUTME</a>
+                <a href="#services" class="nav-link">SERVICE</a>
+                <a href="#portfolio" class="nav-link">PORTFOLIO</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+                <a href="admin.html" class="nav-link text-gold"><i class="fa-solid fa-sliders"></i> ADMIN</a>
+            </nav>
+
+            <!-- Nav Action CTA -->
+            <div class="nav-cta">
+                <button class="btn btn-gold btn-header" onclick="openModal('hireModal')">HIRE ME</button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container hero-container">
+            <!-- Hero Left Content -->
+            <div class="hero-content">
+                <span class="hero-greeting">Hi I am</span>
+                <h1 class="hero-title">KARTHICK RAJA</h1>
+                <h2 class="hero-subtitle">UI/UX Designer</h2>
+
+                <!-- Social Icons -->
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.behance.net/skarthickr672d" target="_blank" rel="noopener" aria-label="Behance" class="social-icon">
+                        <i class="fa-brands fa-behance"></i>
+                    </a>
+                    <a href="https://dribbble.com" target="_blank" rel="noopener" aria-label="Dribbble" class="social-icon">
+                        <i class="fa-brands fa-dribbble"></i>
+                    </a>
+                </div>
+
+                <!-- Hero Action Buttons -->
+                <div class="hero-actions">
+                    <button class="btn btn-gold" onclick="openModal('hireModal')">HIRE ME</button>
+                    <a href="assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" class="btn btn-outline">DOWNLOAD CV <i class="fa-solid fa-download"></i></a>
+                </div>
+
+                <!-- Hero Stats Box -->
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <div class="stat-number-wrap">
+                            <span class="stat-number" data-target="5">5</span>
+                            <span class="stat-plus">+</span>
+                        </div>
+                        <span class="stat-label">Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number-wrap">
+                            <span class="stat-number" data-target="20">20</span>
+                            <span class="stat-plus">+</span>
+                        </div>
+                        <span class="stat-label">Project Done</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number-wrap">
+                            <span class="stat-number" data-target="30">30</span>
+                            <span class="stat-plus">+</span>
+                        </div>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Right Image -->
+            <div class="hero-image-wrapper">
+                <div class="hero-portrait-card">
+                    <div class="portrait-halo"></div>
+                    <img src="assets/portrait.png" alt="Karthick Raja - UI/UX Designer" class="hero-portrait-img" id="hero-portrait">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">DISCOVER MY STORY</span>
+                <h2 class="section-title">About <span class="text-gold">Me</span></h2>
+                <p class="section-desc">Passionate product designer transforming complex user friction into seamless visual journeys.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fa-solid fa-user-check"></i></div>
+                    <h3>User-Centric Philosophy</h3>
+                    <p>As a UI/UX & Graphic Designer, my job involves understanding the needs of both the business and the user and finding a seamless balance between the two.</p>
+                </div>
+
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fa-solid fa-code-compare"></i></div>
+                    <h3>Dev Collaboration</h3>
+                    <p>I work closely with development teams to ensure that designs are implemented correctly, meeting all technical requirements and design specs.</p>
+                </div>
+
+                <div class="about-card glass-card">
+                    <div class="about-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>Graphic & UI Mastery</h3>
+                    <p>Combining wireframing, branding, vector illustration, mobile app design, and social media campaign assets into a unified visual identity.</p>
+                </div>
+            </div>
+
+            <!-- Technical Skills Matrix -->
+            <div class="skills-wrapper glass-card">
+                <h3 class="skills-title">Design Tools & Skill Proficiency</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Figma (UI/UX & Prototyping)</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>CorelDraw (Vector & Branding)</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe XD (Wireframing & UI)</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Illustrator (Graphic Design)</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Adobe Photoshop (Social Assets)</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>DaVinci Resolve (Basic Video Editing)</span>
+                            <span class="skill-percentage">70%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 70%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">WHAT I OFFER</span>
+                <h2 class="section-title">My <span class="text-gold">Services</span></h2>
+                <p class="section-desc">Tailored design solutions designed to elevate brands and drive user engagement.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Item 1 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="service-card-title">UI/UX Design</h3>
+                    <p class="service-card-desc">End-to-end user experience design including personas, user journey mapping, high-fidelity mockups, and interactive Figma prototypes.</p>
+                    <button class="service-link" onclick="openServiceModal('UI/UX Design')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Service Item 2 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="service-card-title">Mobile App Design</h3>
+                    <p class="service-card-desc">Clean, responsive mobile app interfaces tailored for iOS and Android, focusing on thumb-zone usability and micro-interactions.</p>
+                    <button class="service-link" onclick="openServiceModal('Mobile App Design')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Service Item 3 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <h3 class="service-card-title">Web & SaaS Dashboards</h3>
+                    <p class="service-card-desc">Complex web application interfaces simplified into intuitive, data-rich dashboards that improve user productivity.</p>
+                    <button class="service-link" onclick="openServiceModal('Web & SaaS Dashboards')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Service Item 4 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h3 class="service-card-title">Design System Creation</h3>
+                    <p class="service-card-desc">Scalable component libraries with color palettes, typography scale, iconography, and documentation for dev handoff.</p>
+                    <button class="service-link" onclick="openServiceModal('Design Systems')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Service Item 5 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-diagram-project"></i>
+                    </div>
+                    <h3 class="service-card-title">Wireframing & Prototyping</h3>
+                    <p class="service-card-desc">Rapid low-fidelity sketches and animated high-fidelity prototypes to validate product concepts before engineering.</p>
+                    <button class="service-link" onclick="openServiceModal('Wireframing & Prototyping')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+
+                <!-- Service Item 6 -->
+                <div class="service-card glass-card">
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-bezier-curve"></i>
+                    </div>
+                    <h3 class="service-card-title">Brand & Visual Identity</h3>
+                    <p class="service-card-desc">Cohesive visual identity packages including monograms, color systems, typography guides, and marketing assets.</p>
+                    <button class="service-link" onclick="openServiceModal('Brand Identity')">Explore Details <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">RECENT WORKS</span>
+                <h2 class="section-title">Featured <span class="text-gold">Portfolio</span></h2>
+                <p class="section-desc">A selection of recent UI/UX and product design projects delivered for global clients.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
+                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                <button class="filter-btn" data-filter="saas">SaaS & Dashboard</button>
+                <button class="filter-btn" data-filter="web">Websites</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-card glass-card" data-category="mobile uiux">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-fintech">
+                            <i class="fa-solid fa-wallet project-icon"></i>
+                            <span class="project-tag">FINTECH APP</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('PayFlex Mobile Wallet', 'FinTech UI/UX App', 'Complete redesign of a digital wallet app enhancing transaction speeds by 40% with biometrics and smart expense analytics.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Mobile App • UI/UX</span>
+                        <h3 class="project-title">PayFlex - Next-Gen Banking App</h3>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card glass-card" data-category="saas web">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-saas">
+                            <i class="fa-solid fa-chart-line project-icon"></i>
+                            <span class="project-tag">SAAS DASHBOARD</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('Metric Pulse Dashboard', 'Enterprise SaaS Web App', 'Real-time analytics dashboard for data engineers with dark mode visualization components and custom widget builder.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">SaaS • Dashboard</span>
+                        <h3 class="project-title">MetricPulse - Cloud Analytics Platform</h3>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card glass-card" data-category="uiux mobile">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-health">
+                            <i class="fa-solid fa-heart-pulse project-icon"></i>
+                            <span class="project-tag">HEALTHCARE</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('PulseCare Telehealth', 'Healthcare Mobile UI/UX', 'Patient consultation app enabling seamless video appointments, prescription tracking, and AI triage assistance.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Healthcare • iOS & Android</span>
+                        <h3 class="project-title">PulseCare - Smart Telemedicine</h3>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-card glass-card" data-category="web uiux">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-ecommerce">
+                            <i class="fa-solid fa-bag-shopping project-icon"></i>
+                            <span class="project-tag">E-COMMERCE</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('Aura Luxury Apparel', 'E-Commerce Website Design', 'High-end apparel website with 3D product previews, instant checkout flow, and fluid micro-animations.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">E-Commerce • Web Design</span>
+                        <h3 class="project-title">Aura - Luxury Fashion Experience</h3>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-card glass-card" data-category="saas mobile">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-crypto">
+                            <i class="fa-brands fa-ethereum project-icon"></i>
+                            <span class="project-tag">WEB3 / CRYPTO</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('Nova Vault Crypto Wallet', 'Web3 & Crypto UI', 'Non-custodial Web3 crypto wallet design emphasizing security key onboarding and multi-chain asset swapping.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Web3 • Crypto UX</span>
+                        <h3 class="project-title">Nova Vault - Secure Crypto App</h3>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-card glass-card" data-category="mobile saas">
+                    <div class="project-img-wrapper">
+                        <div class="project-dummy-img img-smart">
+                            <i class="fa-solid fa-house-signal project-icon"></i>
+                            <span class="project-tag">IOT & SMART HOME</span>
+                        </div>
+                        <div class="project-overlay">
+                            <button class="project-btn" onclick="openProjectModal('OmniHome IoT Controller', 'Smart Home UI/UX', 'Unified mobile dashboard controlling smart lights, security cameras, energy consumption, and automation routines.')">
+                                View Case Study <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">IoT • Product Design</span>
+                        <h3 class="project-title">OmniHome - IoT Ecosystem</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">TESTIMONIALS</span>
+                <h2 class="section-title">Happy <span class="text-gold">Clients</span></h2>
+                <p class="section-desc">Feedback from founders, product managers, and engineering leaders I've collaborated with.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Karthick transformed our complex fintech workflow into an amazingly simple user interface. User retention increased by 35% within the first month of launch!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">RK</div>
+                        <div>
+                            <h4 class="client-name">Rajesh Kumar</h4>
+                            <span class="client-role">Founder, PayFlex Systems</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Working with Karthick was an absolute delight. His Figma design systems are so well organized that our developers built the app in record speed."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">AP</div>
+                        <div>
+                            <h4 class="client-name">Anita Patel</h4>
+                            <span class="client-role">VP of Product, MetricPulse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Karthick has an exceptional eye for design aesthetics and micro-interactions. The brand identity and app layout he created exceeded all expectations."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MS</div>
+                        <div>
+                            <h4 class="client-name">Michael Sundar</h4>
+                            <span class="client-role">CEO, Aura Luxury Ltd</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-badge">GET IN TOUCH</span>
+                <h2 class="section-title">Let's Work <span class="text-gold">Together</span></h2>
+                <p class="section-desc">Have a project in mind or looking for a dedicated UI/UX designer? Drop a message!</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Contact Info Cards -->
+                <div class="contact-info">
+                    <div class="info-card glass-card">
+                        <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email Me</h4>
+                            <a href="mailto:karthick.designer8@gmail.com">karthick.designer8@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="info-card glass-card">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4>Call / WhatsApp</h4>
+                            <a href="tel:+919994667382">+91 9994667382</a>
+                        </div>
+                    </div>
+
+                    <div class="info-card glass-card">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Address & Location</h4>
+                            <p>6/22 Sindhu Nagar, Kuniyamuthur, Coimbatore</p>
+                        </div>
+                    </div>
+
+                    <div class="availability-badge">
+                        <span class="status-dot"></span>
+                        <span>Available for Freelance Projects & Full-time Roles</span>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form glass-card" id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" required placeholder="e.g. Alexander Pierce">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" required placeholder="e.g. alex@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Project Type</label>
+                        <select id="subject" required class="form-select">
+                            <option value="">Select a service...</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Mobile App Design">Mobile App Design</option>
+                            <option value="Web App / Dashboard">Web App / Dashboard</option>
+                            <option value="Design System">Design System</option>
+                            <option value="Consultation">Consultation & Audit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" required placeholder="Tell me about your product goals, timeline, and requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-full">
+                        Send Message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <div id="formAlert" class="form-alert"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="assets/logo.png" alt="KR Karthick Raja Logo" class="footer-logo-img">
+            </div>
+            <p class="footer-copy">© 2026 Karthick Raja. All Rights Reserved. Crafted with passion & pixel perfection.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://behance.net" target="_blank" rel="noopener"><i class="fa-brands fa-behance"></i></a>
+                <a href="https://dribbble.com" target="_blank" rel="noopener"><i class="fa-brands fa-dribbble"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Universal Modal Backdrops -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()">
+        <!-- Hire Me Modal -->
+        <div class="modal-card glass-card" id="hireModal" onclick="event.stopPropagation()">
+            <div class="ios-modal-handle"></div>
+            <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <span class="section-badge">START A PROJECT</span>
+                <h3>Hire Karthick Raja</h3>
+                <p>Let's collaborate and turn your idea into a world-class digital product.</p>
+            </div>
+            <form onsubmit="handleHireSubmit(event)" class="modal-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Work Email</label>
+                    <input type="email" required placeholder="name@company.com">
+                </div>
+                <div class="form-group">
+                    <label>Estimated Budget</label>
+                    <select class="form-select">
+                        <option>$1,000 - $3,000</option>
+                        <option>$3,000 - $7,000</option>
+                        <option>$7,000 - $15,000+</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-gold btn-full">Submit Hiring Request <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </div>
+
+        <!-- Download CV Modal -->
+        <div class="modal-card glass-card cv-modal-card" id="cvModal" onclick="event.stopPropagation()">
+            <div class="ios-modal-handle"></div>
+            <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <span class="section-badge">OFFICIAL CURRICULUM VITAE</span>
+                <h3>Karthick Raja</h3>
+                <p class="text-gold" style="font-weight:700;">UI & GRAPHIC DESIGNER</p>
+                <div style="font-size:0.85rem; color:var(--text-muted); margin-top:8px; display:flex; flex-wrap:wrap; gap:12px;">
+                    <span><i class="fa-solid fa-phone text-gold"></i> +91 9994667382</span>
+                    <span><i class="fa-solid fa-envelope text-gold"></i> karthick.designer8@gmail.com</span>
+                    <span><i class="fa-solid fa-location-dot text-gold"></i> Coimbatore</span>
+                </div>
+            </div>
+
+            <div class="cv-body" style="max-height: 65vh; overflow-y: auto; padding-right: 8px;">
+                <!-- Profile Info -->
+                <div class="cv-section" style="background: rgba(255,255,255,0.03); padding: 16px; border-radius: 12px; border-left: 3px solid var(--gold-primary);">
+                    <h4 style="margin-bottom:6px;"><i class="fa-solid fa-user text-gold"></i> Profile Summary</h4>
+                    <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
+                        UX designers are responsible for the overall user experience of a website or app. As a UI/UX designer, my job involves understanding the needs of both the business and the user and finding a balance between the two. I work closely with development teams to ensure designs are implemented correctly and meet technical requirements.
+                    </p>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="cv-section">
+                    <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 12px;"><i class="fa-solid fa-briefcase text-gold"></i> Work Experience</h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Company 1 -->
+                        <div style="background: rgba(255,255,255,0.02); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <strong style="color:var(--gold-primary); font-size:0.95rem;">PORTIQO - UI / GRAPHIC DESIGNER</strong>
+                                <span style="font-size:0.8rem; background:rgba(229,184,36,0.15); color:var(--gold-primary); padding:2px 8px; border-radius:12px;">2023 - Present</span>
+                            </div>
+                            <span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Location: Chennai</span>
+                            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+                                HTML, CSS, SQL, Website design, Social media post design, Hoardings, Web Banners, Social media Campaign design, Illustration, Basic video editing.
+                            </p>
+                        </div>
+
+                        <!-- Company 2 -->
+                        <div style="background: rgba(255,255,255,0.02); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <strong style="color:var(--gold-primary); font-size:0.95rem;">CLOCK WORK - UI / GRAPHIC DESIGNER</strong>
+                                <span style="font-size:0.8rem; background:rgba(255,255,255,0.08); color:var(--text-muted); padding:2px 8px; border-radius:12px;">2018 - 2019</span>
+                            </div>
+                            <span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Location: Bangalore</span>
+                            <p style="font-size:0.88rem; color:var(--text-muted); margin-top:6px;">
+                                <strong>Faasos Project:</strong> Executed creation & deployment of highly functional UI screens, corporate brochures, flyers, web design, mobile app screens, illustrations, and social media assets.
+                            </p>
+                        </div>
+
+                        <!-- Company 3 -->
+                        <div style="background: rgba(255,255,255,0.02); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <strong style="color:var(--gold-primary); font-size:0.95rem;">EGAISOFT - UI / GRAPHIC DESIGNER</strong>
+                                <span style="font-size:0.8rem; background:rgba(255,255,255,0.08); color:var(--text-muted); padding:2px 8px; border-radius:12px;">2017 - 2018</span>
+                            </div>
+                            <span style="font-size:0.8rem; color:var(--text-muted); font-style:italic;">Location: Bangalore</span>
+                            <ul style="font-size:0.85rem; color:var(--text-muted); margin-top:6px; padding-left:16px;">
+                                <li><strong>Emoy:</strong> Ceremonial gift tradition management application.</li>
+                                <li><strong>Echit:</strong> Chit fund savings & borrowing funding platform.</li>
+                                <li><strong>Epra:</strong> In-house mechanical part rejection analysis & monthly reporting suite.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="cv-section">
+                    <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 10px;"><i class="fa-solid fa-graduation-cap text-gold"></i> Education</h4>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px;">
+                            <strong style="color:#fff; font-size:0.9rem;">KARPAGAM INSTITUTE OF TECHNOLOGY</strong> (2012 - 2015)
+                            <p style="font-size:0.85rem; color:var(--gold-primary); margin:0;">B.E Computer Science Engineering</p>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px;">
+                            <strong style="color:#fff; font-size:0.9rem;">KARPAGAM POLYTECHNIC COLLEGE</strong> (2008 - 2011)
+                            <p style="font-size:0.85rem; color:var(--gold-primary); margin:0;">Diploma Computer Science Engineering</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Skills & Languages -->
+                <div class="cv-section" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                    <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px;">
+                        <h5 style="color:var(--gold-primary); font-size:0.85rem; margin-bottom:4px;">PERSONAL SKILLS</h5>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">HTML, CSS, SQL, Wireframing, Web Design, Mobile App Design, Prototype, Illustration, Branding Design.</p>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:8px;">
+                        <h5 style="color:var(--gold-primary); font-size:0.85rem; margin-bottom:4px;">LANGUAGES</h5>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">English, Tamil</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cv-actions" style="display:flex; gap:12px; margin-top:20px;">
+                <a href="assets/Karthick_Raja_Resume.pdf" download="Karthick_Raja_Resume.pdf" class="btn btn-gold btn-full"><i class="fa-solid fa-file-pdf"></i> Download Official Resume PDF</a>
+            </div>
+        </div>
+
+        <!-- Generic Info / Project Detail Modal -->
+        <div class="modal-card glass-card info-modal-card" id="infoModal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeAllModals()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="infoModalContent">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
